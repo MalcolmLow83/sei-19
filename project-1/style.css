@@ -1,0 +1,9 @@
+body {
+ background-image: url("images/background0.jpg");
+}
+.container {
+	border: 5px solid red;
+	height: 2436px;
+	width: 1125px;
+	margin: 0 auto;
+}
