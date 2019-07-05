@@ -1,3 +1,5 @@
+window.onload=function(){
+
 console.log("Lets freaking do this mal!");
 
 var object = {
@@ -19,11 +21,11 @@ var randomFloatNumber1 = Math.random() * (99.9 - 0.1) + 0.1;
 var randomItemCost = randomFloatNumber1.toFixed(1);
     console.log("randomItemCost: " + randomItemCost);
 
-//random customerMoney cost
+//random customerMoney
 var randomFloatNumber2 = Math.random() * (99.9 - 0.1) + 0.1;
     console.log("randomFloatNumber2: " + randomFloatNumber2);
 
-//round off to 1 decimal place
+//random customerMoney round off to 1 decimal place
 var randomCustomerMoney = randomFloatNumber2.toFixed(1);
     console.log("CustomerMoney: " + randomCustomerMoney);
 
@@ -33,7 +35,33 @@ var correctChange = (randomCustomerMoney - randomItemCost);
 
 var inputChange = "";
 
-//logic testing
+
+//hide row 2
+var x  = document.getElementById("row2");
+var y = function myFunction() {
+    console.log(x)
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    }   else {
+        x.style.display = "none";
+    }
+};
+
+var lover = document.querySelector("button");
+    lover.addEventListener("click", y);
+
+
+//hide row2a, row2b and 2c
+// var row2a = document.getElementById("row2a");
+// var row2b = document.getElementById("row2b");
+// var row2c = document.getElementById("row2c");
+
+// var hideRow2Childs = function()
+
+
+
+
+// logic testing
 if (randomCustomerMoney < randomItemCost) {
     alert("not enough!!");
 }
@@ -46,3 +74,5 @@ if (randomCustomerMoney < randomItemCost) {
     else if (inputChange === ""){
         alert("too slow, customer left angrily~");
     };
+
+};
