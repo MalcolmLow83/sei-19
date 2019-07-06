@@ -26,29 +26,29 @@ var randomFloatNumber2 = Math.random() * (99.9 - 0.1) + 0.1;
     console.log("randomFloatNumber2: " + randomFloatNumber2);
 
 //random customerMoney round off to 1 decimal place
-var randomCustomerMoney = randomFloatNumber2.toFixed(1);
-    console.log("CustomerMoney: " + randomCustomerMoney);
+var randomCustomerPay = randomFloatNumber2.toFixed(1);
+    console.log("CustomerMoney: " + randomCustomerPay);
 
 //correct change formula
-var correctChange = (randomCustomerMoney - randomItemCost);
+var correctChange = (randomCustomerPay - randomItemCost);
     console.log("check: " + correctChange);
 
-var inputChange = "";
+var playerChange = "";
 
 
-//hide row 2
-var x  = document.getElementById("row2");
-var y = function myFunction() {
-    console.log(x)
-    if (x.style.display === "none") {
-        x.style.display = "block";
+//hide page 0
+var page0  = document.getElementById("page0");
+var hidePage0 = function() {
+    console.log(hidePage0)
+    if (page0.style.display === "none") {
+        page0.style.display = "block";
     }   else {
-        x.style.display = "none";
+        page0.style.display = "none";
     }
 };
 
 var lover = document.querySelector("button");
-    lover.addEventListener("click", y);
+    lover.addEventListener("click", hidePage0);
 
 
 //hide row2a, row2b and 2c
@@ -62,17 +62,17 @@ var lover = document.querySelector("button");
 
 
 // logic testing
-if (randomCustomerMoney < randomItemCost) {
-    alert("not enough!!");
+if (randomCustomerPay < randomItemCost) {
+    console.log("not enough!!");
 }
-    else if (inputChange === correctChange){
-        alert("thank you! come again!");
+    else if (playerChange === correctChange){
+        console.log("thank you! come again!");
     }
-    else if (inputChange > 0 && (inputChange > correctChange || inputChange < correctChange)){
-        alert("wrong change!");
+    else if (playerChange > 0 && (playerChange > correctChange || playerChange < correctChange)){
+        console.log("wrong change!");
 }
-    else if (inputChange === ""){
-        alert("too slow, customer left angrily~");
+    else if (playerChange === ""){
+        console.log("too slow, customer left angrily~");
     };
 
 };

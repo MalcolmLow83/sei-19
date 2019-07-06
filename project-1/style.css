@@ -1,7 +1,6 @@
 body {
  background-image: url("images/background0.jpg");
 }
-
 .container {
 	border: 10px solid black;
 	background-color: lightblue;
@@ -11,91 +10,171 @@ body {
 	margin: 0 auto;
 }
 
-#row0left {
+#level {
 	background-color: yellow;
 	border: 5px solid green;
-	height: 4%;
-	width: 30%;
+	height: 100px;
+	width: 370px;
 	margin-top: 50px;
 	margin-left: 50px;
 	display: inline-block;
+	border-radius: 50px;
+	font-size: 80px;
+	text-align: center;
 }
-
-#row0right {
+#account {
 	background-color: yellow;
 	border: 5px solid green;
-	height: 4%;
-	width: 40%;
+	height: 100px;
+	width: 510px;
 	margin-top: 50px;
-	margin-left: 200px;
+	margin-left: 120px;
 	display: inline-block;
+	border-radius: 50px;
+	font-size: 80px;
+	text-align: center;
 }
 
-#row1 {
+/*--------------page 0-----------*/
+
+#title {
 	background-color: yellow;
 	border: 5px solid blue;
-	height: 10%;
+	height: 200px;
+	width: 1020px;
+	margin: 0 auto;
+	margin-top: 50px;
+	border-radius: 50px;
+	font-size: 80px;
+	text-align: center;
+}
+
+
+
+#page0 {
+	width: 1020px;
+	display: none;
 	margin: 0 auto;
 	margin-top: 50px;
 }
-
-#row2 {
-	border: 5px solid black;
-	height: 1240px;
-	margin: 0 auto;
-	margin-top: 50px;
-}
-
 img{
 	width: 100%;
 	height: 100%;
 	border-radius: 50px;
-
 }
 
-#row2a {
-	background-color: yellow;
-	border: 5px solid red;
+/*--------------page 1--------------*/
+
+#page1 {
+	width: 1020px;
+	display: block;
+	/*background-color: yellow;*/
+	background-image: url("images/fruit0.png");
+	margin: 0 auto;
+	margin-top: 50px;
+}
+#imgDiv {
+	width: 1020px;
 	height: 720px;
-	margin: 0 auto;
+	border-radius: 50px;
+}
+#shopImg {
+	width: 100%;
+	height: 100%;
+	border-radius: 50px;
+	position: relative;
+	/*top: 0px;
+	left: 0px;*/
+}
+#itemImg {
+	width: 20%;
+	height: 20%;
+	border-radius: 50px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	border-radius: 50px;
+	font-size: 80px;
+	text-align: center;
 }
 
-#row2b {
+#itemName {
 	background-color: yellow;
 	border: 5px solid red;
 	height: 200px;
 	margin: 0 auto;
 	margin-top: 50px;
+	border-radius: 50px;
+	font-size: 80px;
+	text-align: center;
 }
 
-#row2c {
+#itemPrice {
 	background-color: yellow;
 	border: 5px solid red;
 	height: 200px;
 	margin: 0 auto;
 	margin-top: 50px;
+	border-radius: 50px;
+	font-size: 80px;
+	text-align: center;
 }
+
+/*#page2 {
+	display: none;
+	background-color: yellow;
+	background-image: url("");
+	margin: 0 auto;
+	margin-top: 50px;*/
+
+.page {
+	height: 1240px;
+	width: 1020px;
+	border: 5px solid black;
+	border-radius: 50px;
+}
+
+
 
 #row3 {
 	background-color: yellow;
 	border: 5px solid green;
-	height: 10%;
+	height: 200px;
+	width: 1020px;
 	margin: 0 auto;
 	margin-top: 50px;
+	border-radius: 50px;
+	font-size: 80px;
+	text-align: center;
 
 }
 
 #row4 {
 	background-color: yellow;
 	border: 5px solid blue;
-	height: 10%;
+	height: 200px;
+	width: 1020px;
 	margin: 0 auto;
 	margin-top: 50px;
+	border-radius: 50px;
+	font-size: 80px;
+	text-align: center;
 }
+
+#button {
+	width: 200px;
+	height: 50px;
+}
+
+
+
+/*--------------page 2--------------*/
+
 
 .row {
 	width: 1020px;
 	border-radius: 50px;
 	font-size: 80px;
 	text-align: center;
+
 }
