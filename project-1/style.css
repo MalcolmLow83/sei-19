@@ -53,7 +53,7 @@ body {
 
 #page0 {
 	width: 1020px;
-	display: none;
+	display: block;
 	margin: 0 auto;
 	margin-top: 50px;
 }
@@ -63,13 +63,19 @@ img{
 	border-radius: 50px;
 }
 
+#button {
+	width: 200px;
+	height: 100px;
+	margin-top: 50px;
+}
+
 /*--------------page 1--------------*/
 
 #page1 {
 	width: 1020px;
-	display: block;
+	display: none;
 	/*background-color: yellow;*/
-	background-image: url("images/fruit0.png");
+	/*background-image: url("images/fruit0.png");*/
 	margin: 0 auto;
 	margin-top: 50px;
 }
@@ -79,45 +85,23 @@ img{
 	border-radius: 50px;
 }
 #shopImg {
-	width: 100%;
-	height: 100%;
+	width: 1020px;
+	height: 730px;
 	border-radius: 50px;
 	position: relative;
-	/*top: 0px;
-	left: 0px;*/
-}
-#itemImg {
-	width: 20%;
-	height: 20%;
-	border-radius: 50px;
-	position: absolute;
+	z-index: 0;
 	top: 0px;
 	left: 0px;
-	border-radius: 50px;
-	font-size: 80px;
-	text-align: center;
 }
-
-#itemName {
-	background-color: yellow;
-	border: 5px solid red;
-	height: 200px;
-	margin: 0 auto;
-	margin-top: 50px;
+#itemImg {
+	width: 300px;
+	height: 300px;
 	border-radius: 50px;
-	font-size: 80px;
-	text-align: center;
-}
-
-#itemPrice {
-	background-color: yellow;
-	border: 5px solid red;
-	height: 200px;
-	margin: 0 auto;
-	margin-top: 50px;
+	position: absolute;
+	top: 515px;
+	left: 110px;
 	border-radius: 50px;
-	font-size: 80px;
-	text-align: center;
+	z-index: 1;
 }
 
 /*#page2 {
@@ -127,6 +111,8 @@ img{
 	margin: 0 auto;
 	margin-top: 50px;*/
 
+
+/*--------------page 2--------------*/
 .page {
 	height: 1240px;
 	width: 1020px;
@@ -134,47 +120,13 @@ img{
 	border-radius: 50px;
 }
 
-
-
-#row3 {
-	background-color: yellow;
-	border: 5px solid green;
-	height: 200px;
-	width: 1020px;
-	margin: 0 auto;
-	margin-top: 50px;
-	border-radius: 50px;
-	font-size: 80px;
-	text-align: center;
-
-}
-
-#row4 {
-	background-color: yellow;
-	border: 5px solid blue;
-	height: 200px;
-	width: 1020px;
-	margin: 0 auto;
-	margin-top: 50px;
-	border-radius: 50px;
-	font-size: 80px;
-	text-align: center;
-}
-
-#button {
-	width: 200px;
-	height: 50px;
-}
-
-
-
-/*--------------page 2--------------*/
-
-
 .row {
 	width: 1020px;
+	background-color: yellow;
 	border-radius: 50px;
 	font-size: 80px;
 	text-align: center;
-
+	margin: 0 auto;
+	margin-top: 70px;
+	border: 5px solid green;
 }
