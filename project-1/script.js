@@ -18,7 +18,7 @@ var object = {
 var randomFloatNumber00 = Math.random() * (.9 - 0.1) + 0.1;
     console.log("randomFloatNumber0: " + randomFloatNumber00);
 
-//round off to 2 decimal place
+//round off to 1 decimal place
 var randomItemPrice0 = randomFloatNumber00.toFixed(1);
     console.log("randomItemPrice0: " + randomItemPrice0);
 
@@ -81,7 +81,7 @@ var randomCustomerPay1 = randomFloatNumber12.toFixed(1);
 
 //hide page 0 and show page 1
 var page0  = document.getElementById("page0");
-var hidePage0 = function() {
+var hidepage0 = function() {
     // console.log(hidePage0)
     if (page0.style.display === "none") {
 
@@ -105,7 +105,7 @@ var hidePage1 = function() {
 };
 
 var button = document.querySelector("button");
-    button.addEventListener("click", hidePage0);
+    button.addEventListener("click", hidepage0);
     button.addEventListener("click", hidePage1);
 
 
