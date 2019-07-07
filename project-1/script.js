@@ -1,7 +1,7 @@
 window.onload=function(){
-
 console.log("Lets freaking do this mal!");
 
+/*global variables----------------*/
 var object = {
 
             "itemImg": ["img0","img1","img2","img3","img4","img5","img6","img7","img8","img9"],
@@ -9,8 +9,41 @@ var object = {
             "itemName": ["itemName0","itemName1","itemName2","itemName3","itemName4","itemName5","itemName6","itemName7","itemName8","itemName9"],
 };
 
+/*functions-----------------------*/
 
-/*--------------level 0-----------*/
+//hide and show function for page 0
+let page0  = document.getElementById("page0");
+
+//hide page 0
+var hidePage0 = function() {
+    page0.style.display = "none";
+};
+
+//show page 0
+var showPage0 = function() {
+    page0.style.display = "block";
+}
+
+//hide and show function for page 1
+let page1  = document.getElementById("page1");
+
+//hide page 0
+var hidePage1 = function() {
+    page1.style.display = "none";
+};
+
+//show page 0
+var showPage1 = function() {
+    page1.style.display = "block";
+}
+
+/*random numbers generation-------*/
+
+//random number random itemImg & itemName
+let randomItem = Math.floor(Math.random() * 10);
+    // console.log("randomItem: " + randomItem);
+
+/*level 0-------------------------*/
 
 //random item price
 let randomFloatNumber00 = Math.random() * (.9 - 0.1) + 0.1;
@@ -28,33 +61,7 @@ let randomFloatNumber01 = Math.random() * (.9 - 0.1) + 0.1;
 let randomCustomerPay0 = randomFloatNumber01.toFixed(1);
     // console.log("randomCustomerPay0: " + randomCustomerPay0);
 
-//random number random itemImg & itemName
-let randomItem = Math.floor(Math.random() * 10);
-    // console.log("randomItem: " + randomItem);
-
-//DOM to game screen
-
-let itemNameRan = document.querySelector("#itemNameRan");
-    itemNameRan.innerHTML = object.itemName[randomItem];
-
-let itemPriceRan = document.querySelector("#itemPriceRan");
-    itemPriceRan.innerHTML = "$" + randomItemPrice0 + "0";
-
-let customerPayRan = document.querySelector("#customerPayRan");
-    customerPayRan.innerHTML = "$" + randomCustomerPay0 + "0";
-
-let playerChange0 = document.querySelector("#playerChange");
-    playerChange0.innerHTML = "$" + randomCustomerPay0 + "0";
-    // console.log("playerChange0: " + playerChange0);
-
-//correct change formula
-let correctChange0 = (randomCustomerPay0 - randomItemPrice0);
-    // console.log("correctChange0: " + correctChange0);
-
-
-
-/*--------------level 1-----------*/
-
+/*level 1-------------------------*/
 
 //random item cost
 let randomFloatNumber11 = Math.random() * (99.9 - 0.1) + 0.1;
@@ -64,7 +71,6 @@ let randomFloatNumber11 = Math.random() * (99.9 - 0.1) + 0.1;
 let randomItemCost1 = randomFloatNumber11.toFixed(2);
     // console.log("randomItemCost1: " + randomItemCost1);
 
-
 //random customerMoney
 let randomFloatNumber12 = Math.random() * (99.9 - 0.1) + 0.1;
     // console.log("randomFloatNumber2: " + randomFloatNumber2);
@@ -73,46 +79,35 @@ let randomFloatNumber12 = Math.random() * (99.9 - 0.1) + 0.1;
 let randomCustomerPay1 = randomFloatNumber12.toFixed(1);
     // console.log("CustomerMoney: " + randomCustomerPay);
 
-
-/*--------------level 1 end-----------*/
-
+/*functions ends------------------*/
 
 
 
-
-//hide and show function for page 0
-var page0  = document.getElementById("page0");
-
-//hide page 0
-var hidePage0 = function() {
-    page0.style.display = "none";
-};
-
-//show page 0
-var showPage0 = function() {
-    page0.style.display = "block";
-}
-
-
-//hide and show function for page 1
-var page1  = document.getElementById("page1");
-
-//hide page 0
-var hidePage1 = function() {
-    page1.style.display = "none";
-};
-
-//show page 0
-var showPage1 = function() {
-    page1.style.display = "block";
-}
-
+/*start game----------------------*/
 
 //when start button is clicked, hide page 0 and show page 1
 var startButton = document.querySelector("#startButton");
     startButton.addEventListener("click", hidePage0);
     startButton.addEventListener("click", showPage1);
 
+//DOM random data to game screen
+let itemNameRan = document.querySelector("#itemNameRan");
+    itemNameRan.innerHTML = object.itemName[randomItem];
+
+let itemPriceRan = document.querySelector("#itemPriceRan");
+    itemPriceRan.innerHTML = "$" + randomItemPrice0 + "0";
+
+let customerPayRan = document.querySelector("#customerPayRan");
+    customerPayRan.innerHTML = "$" + randomCustomerPay0 + "0";
+
+/*player plays game---------------*/
+
+//initialise endgame button to false
+var endGame = document.querySelector("#endGame");
+    endGame.value = false;
+    console.log("endGame.value: " + endGame.value);
+
+//when endgame button click, set value to true, hide page1 show page0
 
 
 
@@ -120,6 +115,17 @@ var startButton = document.querySelector("#startButton");
 
 
 
+
+var playerChange0;
+var playerChange = document.querySelector("#playerChange");
+    playerChange.addEventListener("change", function(event) {
+        console.log( "playerChange.value: " + playerChange.value);
+        playerChange0 = playerChange.value;
+    });
+
+//correct change formula for checking against playerChange
+let correctChange0 = (randomCustomerPay0 - randomItemPrice0);
+    // console.log("correctChange0: " + correctChange0);
 
 
 
