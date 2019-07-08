@@ -146,8 +146,8 @@ div {
 	height: 300px;
 	border-radius: 50px;
 	position: absolute;
-	top: 8px;
-  left: 16px;
+	top: 20px;
+  left: 30px;
 	border-radius: 50px;
 	z-index: 1;
 }
@@ -162,33 +162,14 @@ div {
 	text-align: center;
 }
 
-#buttons {
-	/*border: 5px solid red;*/
-	width: 1000px;
+#endGameButton {
+	border: 5px solid black;
+	width: 450px;
 	height: 100px;
 	margin-top: 70px;
 	text-align: center;
-}
-
-#endGame {
-	border: 5px solid black;
-	width: 450px;
-	height: 100px;
-	display: inline-block;
 	font-size: 80px;
 	border-radius: 50px;
 	background-color: lightgrey;
 
 }
-
-#notEnough {
-	border: 5px solid black;
-	width: 450px;
-	height: 100px;
-	display: inline-block;
-	font-size: 80px;
-	border-radius: 50px;
-	background-color: lightgrey;
-}
-
-/*--------------page 2--------------*/

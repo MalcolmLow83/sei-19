@@ -2,21 +2,21 @@ window.onload=function(){
 console.log("Lets freaking do this mal!");
 
 /*global variables----------------*/
+var page0  = document.getElementById("page0");
+let page1  = document.getElementById("page1");
 var playerChange0;
 var playerChange = document.querySelector("#playerChange");
-var notEnough = document.querySelector("#notEnough");
+var randomItemPriceRoundOff;
+let randomCustomerPayRoundOff;
 
 var object = {
 
-            "itemImg": ["img0","img1","img2","img3","img4","img5","img6","img7","img8","img9"],
+            "itemImg": ["images/fruit1_banana.png","images/fruit1_blueberry.png","images/fruit1_grape.png","images/fruit1_peach.png","images/fruit1_pear.png","images/fruit1_strawberry.png","images/fruit1_banana.png","images/fruit1_blueberry.png","images/fruit1_grape.png","images/fruit1_peach.png"],
 
-            "itemName": ["itemName0","itemName1","itemName2","itemName3","itemName4","itemName5","itemName6","itemName7","itemName8","itemName9"],
+            "itemName": ["Banana","Blue Berry","Grape","Peach","Pear","Strawberry","Banana","Blue Berry","Grape","Peach"],
 };
 
 /*functions-----------------------*/
-
-//hide and show function for page 0
-let page0  = document.getElementById("page0");
 
 //hide page 0
 var hidePage0 = function() {
@@ -27,9 +27,6 @@ var hidePage0 = function() {
 var showPage0 = function() {
     page0.style.display = "block";
 }
-
-//hide and show function for page 1
-let page1  = document.getElementById("page1");
 
 //hide page 0
 var hidePage1 = function() {
@@ -43,135 +40,121 @@ var showPage1 = function() {
 
 /*random numbers generation-------*/
 
-//random number random itemImg & itemName
-let randomItem = Math.floor(Math.random() * 10);
-    // console.log("randomItem: " + randomItem);
+/*random item---------------------*/
+var randomItemNo = function(){
+    let randomNumber = Math.floor(Math.random() * 10);
 
-/*level 0-------------------------*/
+    //random number random itemImg
+    let itemImg = document.querySelector("#itemImg");
+        itemImg.src = object.itemImg[randomNumber];
 
-//random item price
-let randomFloatNumber00 = Math.random() * (.9 - 0.1) + 0.1;
-    // console.log("randomFloatNumber0: " + randomFloatNumber00);
+    //random number random itemName
+    let itemNameRan = document.querySelector("#itemNameRan");
+        itemNameRan.innerHTML = object.itemName[randomNumber];
+};
 
-//round off to 1 decimal place
-let randomItemPrice0 = randomFloatNumber00.toFixed(1);
-    // console.log("randomItemPrice0: " + randomItemPrice0);
+/*random item price---------------*/
+var randomItemPrice = function(){
+    //random item price
+    let randomItemPriceFloatNumber = Math.random() * (.9 - 0.1) + 0.1;
 
-//random customerMoney
-let randomFloatNumber01 = Math.random() * (.9 - 0.1) + 0.1;
-    // console.log("randomFloatNumber01: " + randomFloatNumber01);
+    //round off to 1 decimal place
+    randomItemPriceRoundOff = randomItemPriceFloatNumber.toFixed(2);
 
-//random customerMoney round off to 1 decimal place
-let randomCustomerPay0 = randomFloatNumber01.toFixed(1);
-    // console.log("randomCustomerPay0: " + randomCustomerPay0);
+    let itemPriceRan = document.querySelector("#itemPriceRan");
+        itemPriceRan.innerHTML = "$" + randomItemPriceRoundOff;
+};
 
-// DOM random data to game screen
-let itemNameRan = document.querySelector("#itemNameRan");
-    itemNameRan.innerHTML = object.itemName[randomItem];
+/*random customer pay-------------*/
+var randomCustomerPay = function(){
+    //random customerMoney
+    let randomCustomerPayFloatNumber = Math.random() * (.9 - 0.1) + 0.1;
 
-let itemPriceRan = document.querySelector("#itemPriceRan");
-    itemPriceRan.innerHTML = "$" + randomItemPrice0 + "0";
+    //random customerMoney round off to 1 decimal place
+    randomCustomerPayRoundOff = randomCustomerPayFloatNumber.toFixed(2);
 
-let customerPayRan = document.querySelector("#customerPayRan");
-    customerPayRan.innerHTML = "$" + randomCustomerPay0 + "0";
-
-/*level 1-------------------------*/
-
-//random item cost
-let randomFloatNumber11 = Math.random() * (99.9 - 0.1) + 0.1;
-    // console.log("randomFloatNumber1: " + randomFloatNumber1);
-
-//round off to 2 decimal place
-let randomItemCost1 = randomFloatNumber11.toFixed(2);
-    // console.log("randomItemCost1: " + randomItemCost1);
-
-//random customerMoney
-let randomFloatNumber12 = Math.random() * (99.9 - 0.1) + 0.1;
-    // console.log("randomFloatNumber2: " + randomFloatNumber2);
-
-//random customerMoney round off to 1 decimal place
-let randomCustomerPay1 = randomFloatNumber12.toFixed(1);
-    // console.log("CustomerMoney: " + randomCustomerPay);
+    let customerPayRan = document.querySelector("#customerPayRan");
+        customerPayRan.innerHTML = "$" + randomCustomerPayRoundOff;
+};
 
 /*functions ends------------------*/
 
-
-
-/*start game----------------------*/
-
-//when start button is clicked, hide page 0 and show page 1
-var endGame = document.querySelector("#endGame");
-    endGame.addEventListener("click", function(){
-        hidePage1();
-        showPage0();
-        endGame.value = true
-        console.log("endGame.value: " + endGame.value);
-    });
-
-
+/*buttons-------------------------*/
 var startButton = document.querySelector("#startButton");
     startButton.addEventListener("click", function(){
+        randomItemNo();
+        randomItemPrice();
+        randomCustomerPay();
         playerChange.value = null;
-        // testRandom();
-        console.log("playerChange.value: " + playerChange.value);
         hidePage0();
         showPage1();
-        endGame.value = false;
-        notEnough.value = false;
-        console.log("endGame.value: " + endGame.value);
+        endGameButton.value = false;
     });
 
-/*player plays game---------------*/
-
-notEnough.addEventListener("click", function(){
-        notEnough.value = true;
-        console.log("notEnough.value: " + notEnough.value);
+var endGameButton = document.querySelector("#endGameButton");
+    endGameButton.addEventListener("click", function(){
+        hidePage1();
+        showPage0();
+        endGameButton.value = true
     });
 
 // var playerChange = document.querySelector("#playerChange");
 playerChange.addEventListener("change", function(){
-    console.log("playerChange.value: " + playerChange.value);
+        console.log("playerChange.value: " + playerChange.value);
+        if (endGameButton.value === false) {
 
-        if (endGame.value === false) {
-            playerChange0 = playerChange.value;
-            console.log("playerChange0: " + playerChange0);
+            // correct change formula for checking against playerChange
+            let correctChangeFloat = (randomCustomerPayRoundOff - randomItemPriceRoundOff);
+            let correctChange = correctChangeFloat.toFixed(2);
+            console.log("correctChange: " + correctChange);
 
-            //correct change formula for checking against playerChange
-            let correctChangeFloat0 = (randomCustomerPay0 - randomItemPrice0);
-            let correctChange0 = correctChangeFloat0.toFixed(1);
-            console.log("correctChange0: " + correctChange0);
-
-            if (playerChange0 === correctChange0 && correctChange0 > 0) {
-                alert("thank you! come again!");
+            if (playerChange.value === correctChange && correctChange > 0) {
+                alert("Thank you very much! Please Come Again!");
                 playerChange.value = null;
-                // testRandom();
-
+                randomItemNo();
+                randomItemPrice();
+                randomCustomerPay();
             }
-            else if (playerChange0 < correctChange0 && correctChange0 > 0) {
-                alert("under-change!!");
+            else if (playerChange.value < correctChange && correctChange > 0) {
+                alert("Under-Change!! Correct Change is " + correctChange);
                 playerChange.value = null;
-                // testRandom();
-
+                randomItemNo();
+                randomItemPrice();
+                randomCustomerPay();
             }
-            else if (playerChange0 > correctChange0 && correctChange0 > 0) {
-                alert("over-change!!");
+            else if (playerChange.value > correctChange && correctChange > 0) {
+                alert("Over-Change!! Correct Change is " + correctChange);
                 playerChange.value = null;
-                // testRandom();
-
+                randomItemNo();
+                randomItemPrice();
+                randomCustomerPay();
             }
-            else if (playerChange0 === 0.0 && correctChange0 === 0.0) {
-                alert("thank you! come again!");
-                // testRandom();
+            else if (playerChange.value === 0.0 && correctChange === 0.0) {
+                alert("Thank You Very Much! Please Come Again!");
+                randomItemNo();
+                randomItemPrice();
+                randomCustomerPay();
             }
-
-            else if (correctChange0 < 0) {
-                alert("Good job! You spotted under-paying customer!!");
+            else if (correctChange < 0 && playerChange.value > 0) {
+                alert("Oh no! Customer Have under-Paid You!!");
                 playerChange.value = null;
-                // testRandom();
+                randomItemNo();
+                randomItemPrice();
+                randomCustomerPay();
             }
+            else if (correctChange < 0 && parseInt(playerChange.value) === 0) {
+                alert("Good job! You Spotted a Under-Paying Customer!!");
+                playerChange.value = null;
+                randomItemNo();
+                randomItemPrice();
+                randomCustomerPay();
+            }
+            else if (playerChange.value < 0) {
+                alert("Sorry~ We don't Understand");
+            };
+
         }
 
 });
-
 
 };
