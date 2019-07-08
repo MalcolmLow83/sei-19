@@ -7,7 +7,14 @@ let page1  = document.getElementById("page1");
 var playerChange0;
 var playerChange = document.querySelector("#playerChange");
 var randomItemPriceRoundOff;
-let randomCustomerPayRoundOff;
+var randomCustomerPayRoundOff;
+
+var profit = 0.0;
+var lastProfit = document.querySelector("#lastProfit");
+
+
+
+var account = document.querySelector("#account");
 
 var object = {
 
@@ -93,6 +100,8 @@ var startButton = document.querySelector("#startButton");
 
 var endGameButton = document.querySelector("#endGameButton");
     endGameButton.addEventListener("click", function(){
+        lastProfit.value = profit;
+        console.log("lastProfit.value: " + lastProfit.value)
         hidePage1();
         showPage0();
         endGameButton.value = true
@@ -109,11 +118,15 @@ playerChange.addEventListener("change", function(){
             console.log("correctChange: " + correctChange);
 
             if (playerChange.value === correctChange && correctChange > 0) {
+                profit = profit + parseFloat(playerChange.value);
+                console.log("profit:" + profit);
                 alert("Thank you very much! Please Come Again!");
+
                 playerChange.value = null;
                 randomItemNo();
                 randomItemPrice();
                 randomCustomerPay();
+
             }
             else if (playerChange.value < correctChange && correctChange > 0) {
                 alert("Under-Change!! Correct Change is " + correctChange);
@@ -121,6 +134,7 @@ playerChange.addEventListener("change", function(){
                 randomItemNo();
                 randomItemPrice();
                 randomCustomerPay();
+
             }
             else if (playerChange.value > correctChange && correctChange > 0) {
                 alert("Over-Change!! Correct Change is " + correctChange);
@@ -128,12 +142,15 @@ playerChange.addEventListener("change", function(){
                 randomItemNo();
                 randomItemPrice();
                 randomCustomerPay();
+
             }
             else if (playerChange.value === 0.0 && correctChange === 0.0) {
+                profit = profit + parseFloat(playerChange.value);
                 alert("Thank You Very Much! Please Come Again!");
                 randomItemNo();
                 randomItemPrice();
                 randomCustomerPay();
+
             }
             else if (correctChange < 0 && playerChange.value > 0) {
                 alert("Oh no! Customer Have under-Paid You!!");
@@ -141,6 +158,7 @@ playerChange.addEventListener("change", function(){
                 randomItemNo();
                 randomItemPrice();
                 randomCustomerPay();
+
             }
             else if (correctChange < 0 && parseInt(playerChange.value) === 0) {
                 alert("Good job! You Spotted a Under-Paying Customer!!");
@@ -148,6 +166,7 @@ playerChange.addEventListener("change", function(){
                 randomItemNo();
                 randomItemPrice();
                 randomCustomerPay();
+
             }
             else if (playerChange.value < 0) {
                 alert("Sorry~ We don't Understand");
