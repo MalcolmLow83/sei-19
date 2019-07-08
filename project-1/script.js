@@ -5,9 +5,6 @@ console.log("Lets freaking do this mal!");
 var playerChange0;
 var playerChange = document.querySelector("#playerChange");
 var notEnough = document.querySelector("#notEnough");
-var randomItem;
-var randomItemPrice0;
-var randomCustomerPay0;
 
 var object = {
 
@@ -46,9 +43,8 @@ var showPage1 = function() {
 
 /*random numbers generation-------*/
 
-
 //random number random itemImg & itemName
-randomItem = Math.floor(Math.random() * 10);
+let randomItem = Math.floor(Math.random() * 10);
     // console.log("randomItem: " + randomItem);
 
 /*level 0-------------------------*/
@@ -58,7 +54,7 @@ let randomFloatNumber00 = Math.random() * (.9 - 0.1) + 0.1;
     // console.log("randomFloatNumber0: " + randomFloatNumber00);
 
 //round off to 1 decimal place
-randomItemPrice0 = randomFloatNumber00.toFixed(1);
+let randomItemPrice0 = randomFloatNumber00.toFixed(1);
     // console.log("randomItemPrice0: " + randomItemPrice0);
 
 //random customerMoney
@@ -66,9 +62,18 @@ let randomFloatNumber01 = Math.random() * (.9 - 0.1) + 0.1;
     // console.log("randomFloatNumber01: " + randomFloatNumber01);
 
 //random customerMoney round off to 1 decimal place
-randomCustomerPay0 = randomFloatNumber01.toFixed(1);
+let randomCustomerPay0 = randomFloatNumber01.toFixed(1);
     // console.log("randomCustomerPay0: " + randomCustomerPay0);
 
+// DOM random data to game screen
+let itemNameRan = document.querySelector("#itemNameRan");
+    itemNameRan.innerHTML = object.itemName[randomItem];
+
+let itemPriceRan = document.querySelector("#itemPriceRan");
+    itemPriceRan.innerHTML = "$" + randomItemPrice0 + "0";
+
+let customerPayRan = document.querySelector("#customerPayRan");
+    customerPayRan.innerHTML = "$" + randomCustomerPay0 + "0";
 
 /*level 1-------------------------*/
 
@@ -107,6 +112,7 @@ var endGame = document.querySelector("#endGame");
 var startButton = document.querySelector("#startButton");
     startButton.addEventListener("click", function(){
         playerChange.value = null;
+        // testRandom();
         console.log("playerChange.value: " + playerChange.value);
         hidePage0();
         showPage1();
@@ -114,16 +120,6 @@ var startButton = document.querySelector("#startButton");
         notEnough.value = false;
         console.log("endGame.value: " + endGame.value);
     });
-
-//DOM random data to game screen
-let itemNameRan = document.querySelector("#itemNameRan");
-    itemNameRan.innerHTML = object.itemName[randomItem];
-
-let itemPriceRan = document.querySelector("#itemPriceRan");
-    itemPriceRan.innerHTML = "$" + randomItemPrice0 + "0";
-
-let customerPayRan = document.querySelector("#customerPayRan");
-    customerPayRan.innerHTML = "$" + randomCustomerPay0 + "0";
 
 /*player plays game---------------*/
 
@@ -145,32 +141,37 @@ playerChange.addEventListener("change", function(){
             let correctChange0 = correctChangeFloat0.toFixed(1);
             console.log("correctChange0: " + correctChange0);
 
-            var x = Math.sign(correctChange0);
-            console.log(x);
-
             if (playerChange0 === correctChange0 && correctChange0 > 0) {
                 alert("thank you! come again!");
                 playerChange.value = null;
+                // testRandom();
+
             }
             else if (playerChange0 < correctChange0 && correctChange0 > 0) {
                 alert("under-change!!");
                 playerChange.value = null;
+                // testRandom();
+
             }
             else if (playerChange0 > correctChange0 && correctChange0 > 0) {
                 alert("over-change!!");
                 playerChange.value = null;
+                // testRandom();
+
             }
+            else if (playerChange0 === 0.0 && correctChange0 === 0.0) {
+                alert("thank you! come again!");
+                // testRandom();
+            }
+
             else if (correctChange0 < 0) {
                 alert("Good job! You spotted under-paying customer!!");
                 playerChange.value = null;
+                // testRandom();
             }
-
         }
 
 });
-
-
-
 
 
 };
