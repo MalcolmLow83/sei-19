@@ -2,6 +2,13 @@ window.onload=function(){
 console.log("Lets freaking do this mal!");
 
 /*global variables----------------*/
+var playerChange0;
+var playerChange = document.querySelector("#playerChange");
+var notEnough = document.querySelector("#notEnough");
+var randomItem;
+var randomItemPrice0;
+var randomCustomerPay0;
+
 var object = {
 
             "itemImg": ["img0","img1","img2","img3","img4","img5","img6","img7","img8","img9"],
@@ -39,8 +46,9 @@ var showPage1 = function() {
 
 /*random numbers generation-------*/
 
+
 //random number random itemImg & itemName
-let randomItem = Math.floor(Math.random() * 10);
+randomItem = Math.floor(Math.random() * 10);
     // console.log("randomItem: " + randomItem);
 
 /*level 0-------------------------*/
@@ -50,7 +58,7 @@ let randomFloatNumber00 = Math.random() * (.9 - 0.1) + 0.1;
     // console.log("randomFloatNumber0: " + randomFloatNumber00);
 
 //round off to 1 decimal place
-let randomItemPrice0 = randomFloatNumber00.toFixed(1);
+randomItemPrice0 = randomFloatNumber00.toFixed(1);
     // console.log("randomItemPrice0: " + randomItemPrice0);
 
 //random customerMoney
@@ -58,8 +66,9 @@ let randomFloatNumber01 = Math.random() * (.9 - 0.1) + 0.1;
     // console.log("randomFloatNumber01: " + randomFloatNumber01);
 
 //random customerMoney round off to 1 decimal place
-let randomCustomerPay0 = randomFloatNumber01.toFixed(1);
+randomCustomerPay0 = randomFloatNumber01.toFixed(1);
     // console.log("randomCustomerPay0: " + randomCustomerPay0);
+
 
 /*level 1-------------------------*/
 
@@ -86,9 +95,25 @@ let randomCustomerPay1 = randomFloatNumber12.toFixed(1);
 /*start game----------------------*/
 
 //when start button is clicked, hide page 0 and show page 1
+var endGame = document.querySelector("#endGame");
+    endGame.addEventListener("click", function(){
+        hidePage1();
+        showPage0();
+        endGame.value = true
+        console.log("endGame.value: " + endGame.value);
+    });
+
+
 var startButton = document.querySelector("#startButton");
-    startButton.addEventListener("click", hidePage0);
-    startButton.addEventListener("click", showPage1);
+    startButton.addEventListener("click", function(){
+        playerChange.value = null;
+        console.log("playerChange.value: " + playerChange.value);
+        hidePage0();
+        showPage1();
+        endGame.value = false;
+        notEnough.value = false;
+        console.log("endGame.value: " + endGame.value);
+    });
 
 //DOM random data to game screen
 let itemNameRan = document.querySelector("#itemNameRan");
@@ -102,45 +127,50 @@ let customerPayRan = document.querySelector("#customerPayRan");
 
 /*player plays game---------------*/
 
-//initialise endgame button to false
-var endGame = document.querySelector("#endGame");
-    endGame.value = false;
-    console.log("endGame.value: " + endGame.value);
-
-//when endgame button click, set value to true, hide page1 show page0
-
-
-
-
-
-
-
-
-var playerChange0;
-var playerChange = document.querySelector("#playerChange");
-    playerChange.addEventListener("change", function(event) {
-        console.log( "playerChange.value: " + playerChange.value);
-        playerChange0 = playerChange.value;
+notEnough.addEventListener("click", function(){
+        notEnough.value = true;
+        console.log("notEnough.value: " + notEnough.value);
     });
 
-//correct change formula for checking against playerChange
-let correctChange0 = (randomCustomerPay0 - randomItemPrice0);
-    // console.log("correctChange0: " + correctChange0);
+// var playerChange = document.querySelector("#playerChange");
+playerChange.addEventListener("change", function(){
+    console.log("playerChange.value: " + playerChange.value);
+
+        if (endGame.value === false) {
+            playerChange0 = playerChange.value;
+            console.log("playerChange0: " + playerChange0);
+
+            //correct change formula for checking against playerChange
+            let correctChangeFloat0 = (randomCustomerPay0 - randomItemPrice0);
+            let correctChange0 = correctChangeFloat0.toFixed(1);
+            console.log("correctChange0: " + correctChange0);
+
+            var x = Math.sign(correctChange0);
+            console.log(x);
+
+            if (playerChange0 === correctChange0 && correctChange0 > 0) {
+                alert("thank you! come again!");
+                playerChange.value = null;
+            }
+            else if (playerChange0 < correctChange0 && correctChange0 > 0) {
+                alert("under-change!!");
+                playerChange.value = null;
+            }
+            else if (playerChange0 > correctChange0 && correctChange0 > 0) {
+                alert("over-change!!");
+                playerChange.value = null;
+            }
+            else if (correctChange0 < 0) {
+                alert("Good job! You spotted under-paying customer!!");
+                playerChange.value = null;
+            }
+
+        }
+
+});
 
 
 
-// logic testing
-if (randomCustomerPay0 < randomItemPrice0) {
-    console.log("not enough!!");
-}
-    else if (playerChange0 === correctChange0){
-        console.log("thank you! come again!");
-    }
-    else if (playerChange0 > 0 && (playerChange0 > correctChange0 || playerChange0 < correctChange0)){
-        console.log("wrong change!");
-}
-    else if (playerChange0 === ""){
-        console.log("too slow, customer left angrily~");
-    };
+
 
 };
