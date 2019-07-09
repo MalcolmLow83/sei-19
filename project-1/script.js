@@ -14,6 +14,12 @@ var decimal = 2;
 var chaChing = new Audio();
 chaChing.src = "sound/cha_ching.mp3";
 
+var uhOh = new Audio();
+uhOh.src = "sound/uhOh.mp3";
+
+var waterDroplet = new Audio();
+waterDroplet.src = "sound/waterDroplet.mp3";
+
 var happyNumber = document.querySelector("#happyNumber");
     happyNumber.innerHTML = "0%";
 var happyNumberCount = 0;
@@ -21,6 +27,8 @@ var happyNumberCount = 0;
 var customerNumber = document.querySelector("#customerNumber");
     customerNumber.innerHTML = "0";
 var customerNumberCount = 0;
+
+var speech = document.querySelector("#speech");
 
 var playerChange0;
 var playerChange = document.querySelector("#playerChange");
@@ -104,6 +112,11 @@ var randomCustomerPay = function(max, min, decimal){
 /*functions ends------------------*/
 
 var level = document.querySelector("#level");
+
+    level.addEventListener("mouseover", function(){
+        waterDroplet.play();
+    });
+
     level.addEventListener("click", function(){
 
         if (level.innerHTML === "Level: 0") {
@@ -127,6 +140,11 @@ var level = document.querySelector("#level");
     });
 
 var playerInputName = document.querySelector("#playerInputName");
+
+    playerInputName.addEventListener("mouseover", function(){
+        waterDroplet.play();
+    });
+
     playerInputName.addEventListener("change", function(){
         var playerName = document.querySelector("#playerName");
         playerName.innerHTML = "Hi " + playerInputName.value;
@@ -134,12 +152,19 @@ var playerInputName = document.querySelector("#playerInputName");
 
 /*buttons-------------------------*/
 var startButton = document.querySelector("#startButton");
+
+    startButton.addEventListener("mouseover", function(){
+        waterDroplet.play();
+    });
+
     startButton.addEventListener("click", function(){
         happyNumberCount = 0;
         customerNumberCount = 0;
+
         randomItemNo();
         randomItemPrice(max, min, decimal);
         randomCustomerPay(max, min, decimal);
+
         playerChange.value = null;
         hidePage0();
         showPage1();
@@ -148,6 +173,11 @@ var startButton = document.querySelector("#startButton");
     });
 
 var endGameButton = document.querySelector("#endGameButton");
+
+    endGameButton.addEventListener("mouseover", function(){
+        waterDroplet.play();
+    });
+
     endGameButton.addEventListener("click", function(){
 
         profitRoundOff = profitFloat.toFixed(2);
@@ -158,8 +188,11 @@ var endGameButton = document.querySelector("#endGameButton");
         endGameButton.value = true
     });
 
-
 // var playerChange = document.querySelector("#playerChange");
+playerChange.addEventListener("mouseover", function(){
+        waterDroplet.play();
+    });
+
 playerChange.addEventListener("change", function(){
         // console.log("playerChange.value: " + playerChange.value);
         if (endGameButton.value === false) {
@@ -174,6 +207,7 @@ playerChange.addEventListener("change", function(){
                 profitFloat = profitFloat + parseFloat(randomItemPriceRoundOff);
                 happyNumberCount = happyNumberCount + 1;
                 chaChing.play();
+                speech.innerHTML = "Good Job!";
                 alert("Thank You Very Much! Please Come Again!");
 
             }
@@ -181,36 +215,48 @@ playerChange.addEventListener("change", function(){
                 profitFloat = profitFloat + parseFloat(randomItemPriceRoundOff);
                 happyNumberCount = happyNumberCount + 1;
                 chaChing.play();
+                speech.innerHTML = "Good Job!";
                 alert("Thank you very much! Please Come Again!");
 
             }
             else if (playerChange.value < correctChange && correctChange > 0) {
                 profitFloat = profitFloat - parseFloat(correctChange - playerChange.value);
+                uhOh.play();
+                speech.innerHTML = "Oh dear!!";
                 alert("Under-Change!! Correct Change is " + correctChange);
 
             }
             else if (playerChange.value > correctChange && correctChange > 0) {
                 profitFloat = profitFloat - parseFloat(playerChange.value - correctChange);
+                uhOh.play();
+                speech.innerHTML = "Oh dear!!";
                 alert("Over-Change!! Correct Change is " + correctChange);
 
             }
             else if (correctChange < 0 && playerChange.value > 0) {
                 profitFloat = profitFloat - parseFloat(randomItemPriceRoundOff);
+                uhOh.play();
+                speech.innerHTML = "Oh dear!!";
                 alert("Oh no! You gave away your item!!");
 
             }
             else if (correctChange < 0 && parseInt(playerChange.value) === 0) {
                 profitFloat = profitFloat + parseFloat(randomItemPriceRoundOff);
                 happyNumberCount = happyNumberCount + 1;
+                chaChing.play();
+                speech.innerHTML = "Good Job!";
                 alert("Good job! You Spotted a Under-Paying Customer!!");
 
             }
             else if (playerChange.value < 0) {
+                uhOh.play();
+                speech.innerHTML = "Oh dear!!";
                 alert("Sorry~ We don't Understand");
 
             }
             playerChange.value = null;
             customerNumberCount = customerNumberCount + 1;
+
 
             //covert happy number to percentage, round off happy to 1 decimal place and DOM to happy percentage
             let happyNumberCountRoundOff = (happyNumberCount / customerNumberCount * 100).toFixed(1);
