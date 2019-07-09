@@ -43,8 +43,8 @@ div {
 }
 
 #level {
-	background-color: yellow;
-	border: 10px solid green;
+	background-color: lightgrey;
+	border: 10px solid black;
 	height: 100px;
 	width: 370px;
 	margin-top: 45px;
@@ -53,6 +53,8 @@ div {
 	font-size: 80px;
 	text-align: center;
 	display: inline-block;
+	font-family:'Russo One', sans-serif;
+	color: black;
 }
 
 #account {
@@ -96,14 +98,6 @@ div {
 	height:1200px;
 	margin-top: 45px;
 }
-
-/*#button {
-	width: 200px;
-	height: 100px;
-	margin: 0 auto;
-	margin-top: 45px;
-	display: block
-}*/
 
 #playerInputName {
 	width: 400px;
