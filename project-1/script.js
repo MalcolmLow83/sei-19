@@ -2,6 +2,8 @@ window.onload=function(){
 console.log("Hang in there Mal! Just hang in there... 👼");
 
 /*global variables----------------*/
+var account = document.querySelector("#account");
+
 var page0  = document.getElementById("page0");
 var page1  = document.getElementById("page1");
 
@@ -9,7 +11,16 @@ var max = 0.9;
 var min = 0.1;
 var decimal = 2;
 
-var customerNo = 0;
+var chaChing = new Audio();
+chaChing.src = "sound/cha_ching.mp3";
+
+var happyNumber = document.querySelector("#happyNumber");
+    happyNumber.innerHTML = "0%";
+var happyNumberCount = 0;
+
+var customerNumber = document.querySelector("#customerNumber");
+    customerNumber.innerHTML = "0";
+var customerNumberCount = 0;
 
 var playerChange0;
 var playerChange = document.querySelector("#playerChange");
@@ -22,8 +33,6 @@ var profitRoundOff;
 var lastProfit = document.querySelector("#lastProfit");
     // lastProfit.innerHTML = "$ " + 10;
     lastProfit.innerHTML = "$ " + profitFloat.toString();
-
-var account = document.querySelector("#account");
 
 var object = {
 
@@ -91,6 +100,7 @@ var randomCustomerPay = function(max, min, decimal){
         customerPayRan.innerHTML = "$" + randomCustomerPayRoundOff;
 };
 
+
 /*functions ends------------------*/
 
 var level = document.querySelector("#level");
@@ -125,7 +135,8 @@ var playerInputName = document.querySelector("#playerInputName");
 /*buttons-------------------------*/
 var startButton = document.querySelector("#startButton");
     startButton.addEventListener("click", function(){
-        customerNo = 0;
+        happyNumberCount = 0;
+        customerNumberCount = 0;
         randomItemNo();
         randomItemPrice(max, min, decimal);
         randomCustomerPay(max, min, decimal);
@@ -150,79 +161,70 @@ var endGameButton = document.querySelector("#endGameButton");
 
 // var playerChange = document.querySelector("#playerChange");
 playerChange.addEventListener("change", function(){
-        console.log("playerChange.value: " + playerChange.value);
+        // console.log("playerChange.value: " + playerChange.value);
         if (endGameButton.value === false) {
 
             // correct change formula for checking against playerChange
             let correctChangeFloat = (randomCustomerPayRoundOff - randomItemPriceRoundOff);
             let correctChange = correctChangeFloat.toFixed(2);
-            console.log("correctChange: " + correctChange);
+            // console.log("correctChange: " + correctChange);
 
 
             if (playerChange.value === 0.00 && correctChange === 0.00) {
                 profitFloat = profitFloat + parseFloat(randomItemPriceRoundOff);
+                happyNumberCount = happyNumberCount + 1;
+                chaChing.play();
                 alert("Thank You Very Much! Please Come Again!");
-                playerChange.value = null;
-                randomItemNo();
-                randomItemPrice(max, min, decimal);
-                randomCustomerPay(max, min, decimal);
 
             }
             else if (playerChange.value === correctChange && correctChange > 0) {
                 profitFloat = profitFloat + parseFloat(randomItemPriceRoundOff);
+                happyNumberCount = happyNumberCount + 1;
+                chaChing.play();
                 alert("Thank you very much! Please Come Again!");
-                playerChange.value = null;
-                randomItemNo();
-                randomItemPrice(max, min, decimal);
-                randomCustomerPay(max, min, decimal);
 
             }
             else if (playerChange.value < correctChange && correctChange > 0) {
                 profitFloat = profitFloat - parseFloat(correctChange - playerChange.value);
                 alert("Under-Change!! Correct Change is " + correctChange);
-                playerChange.value = null;
-                randomItemNo();
-                randomItemPrice(max, min, decimal);
-                randomCustomerPay(max, min, decimal);
 
             }
             else if (playerChange.value > correctChange && correctChange > 0) {
                 profitFloat = profitFloat - parseFloat(playerChange.value - correctChange);
                 alert("Over-Change!! Correct Change is " + correctChange);
-                playerChange.value = null;
-                randomItemNo();
-                randomItemPrice(max, min, decimal);
-                randomCustomerPay(max, min, decimal);
 
             }
             else if (correctChange < 0 && playerChange.value > 0) {
                 profitFloat = profitFloat - parseFloat(randomItemPriceRoundOff);
                 alert("Oh no! You gave away your item!!");
-                playerChange.value = null;
-                randomItemNo();
-                randomItemPrice(max, min, decimal);
-                randomCustomerPay(max, min, decimal);
 
             }
             else if (correctChange < 0 && parseInt(playerChange.value) === 0) {
                 profitFloat = profitFloat + parseFloat(randomItemPriceRoundOff);
+                happyNumberCount = happyNumberCount + 1;
                 alert("Good job! You Spotted a Under-Paying Customer!!");
-                playerChange.value = null;
-                randomItemNo();
-                randomItemPrice(max, min, decimal);
-                randomCustomerPay(max, min, decimal);
 
             }
             else if (playerChange.value < 0) {
                 alert("Sorry~ We don't Understand");
+
             }
-            customerNo = customerNo + 1;
-            console.log("customerNo: " + customerNo);
+            playerChange.value = null;
+            customerNumberCount = customerNumberCount + 1;
+
+            //covert happy number to percentage, round off happy to 1 decimal place and DOM to happy percentage
+            let happyNumberCountRoundOff = (happyNumberCount / customerNumberCount * 100).toFixed(1);
+            happyNumber.innerHTML = happyNumberCountRoundOff.toString() + "%";
+
+            //DOM to customerNumber
+            customerNumber.innerHTML = customerNumberCount.toString();
+
             console.log("profitFloat: " + profitFloat);
+            randomItemNo();
+            randomItemPrice(max, min, decimal);
+            randomCustomerPay(max, min, decimal);
         }
 
 });
-
-
 
 };

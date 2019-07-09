@@ -8,6 +8,13 @@
     <title>Can You Change Fast $</title>
 </head>
 <body>
+    <iframe src="sound/silence.mp3" allow = "autoplay" style = "display: none" id = "iframeAudio"></iframe>
+
+    <audio id = "player" autoplay loop>
+        <source src="sound/bgm0.mp3" type = "audio/mp3">
+    </audio>
+
+
     <div id = "container" class = "container">
 
 
@@ -21,7 +28,7 @@
 
         <div id = "page0" class = "page">
 
-            <div id = "title">Can You Change Fast $<br>😭    😱   😨   🤑   🤔   😆   😍</div>
+            <div id = "title">Can You Change Accurately $   😭    😱   😨   🤑   🤔   😆   😍</div>
 
             <div id = "frontImg" class = "page">
                 <img src="images/front6.png">
@@ -40,7 +47,7 @@
             </div>
 
 
-            <div id = "startButton">START GAME!</div>
+            <div id = "startButton" class = button>START GAME!</div>
 
 
         </div>
@@ -49,8 +56,9 @@
 
         <div id = "page1" class = "page">
 
-            <div id = "gameParameter" class = "row">Customers | Happy
-                <div id = "gameStatus">~ Coming Soon ~</div>
+            <div id = "gameParameter" class = "row">    Happy | Customers</br>
+                <div id = "happyNumber">100%</div>
+                <div id = "customerNumber">#</div>
             </div>
 
 
@@ -79,6 +87,7 @@
                 <div>
                     <input type = "number" id = "playerChange">
                 </div>
+
             </div>
 
 
