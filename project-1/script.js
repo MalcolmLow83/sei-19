@@ -17,8 +17,20 @@ chaChing.src = "sound/cha_ching.mp3";
 var uhOh = new Audio();
 uhOh.src = "sound/uhOh.mp3";
 
-var waterDroplet = new Audio();
-waterDroplet.src = "sound/waterDroplet.mp3";
+var waterDroplet0 = new Audio();
+waterDroplet0.src = "sound/waterDroplet0.mp3";
+
+var waterDroplet1 = new Audio();
+waterDroplet1.src = "sound/waterDroplet1.mp3";
+
+var waterDroplet2 = new Audio();
+waterDroplet2.src = "sound/waterDroplet2.mp3";
+
+var waterDroplet3 = new Audio();
+waterDroplet3.src = "sound/waterDroplet3.mp3";
+
+var waterDroplet4 = new Audio();
+waterDroplet4.src = "sound/waterDroplet4.mp3";
 
 var happyNumber = document.querySelector("#happyNumber");
     happyNumber.innerHTML = "0%";
@@ -114,7 +126,7 @@ var randomCustomerPay = function(max, min, decimal){
 var level = document.querySelector("#level");
 
     level.addEventListener("mouseover", function(){
-        waterDroplet.play();
+        waterDroplet0.play();
     });
 
     level.addEventListener("click", function(){
@@ -142,7 +154,7 @@ var level = document.querySelector("#level");
 var playerInputName = document.querySelector("#playerInputName");
 
     playerInputName.addEventListener("mouseover", function(){
-        waterDroplet.play();
+        waterDroplet1.play();
     });
 
     playerInputName.addEventListener("change", function(){
@@ -154,7 +166,7 @@ var playerInputName = document.querySelector("#playerInputName");
 var startButton = document.querySelector("#startButton");
 
     startButton.addEventListener("mouseover", function(){
-        waterDroplet.play();
+        waterDroplet2.play();
     });
 
     startButton.addEventListener("click", function(){
@@ -175,7 +187,7 @@ var startButton = document.querySelector("#startButton");
 var endGameButton = document.querySelector("#endGameButton");
 
     endGameButton.addEventListener("mouseover", function(){
-        waterDroplet.play();
+        waterDroplet4.play();
     });
 
     endGameButton.addEventListener("click", function(){
@@ -190,7 +202,7 @@ var endGameButton = document.querySelector("#endGameButton");
 
 // var playerChange = document.querySelector("#playerChange");
 playerChange.addEventListener("mouseover", function(){
-        waterDroplet.play();
+        waterDroplet3.play();
     });
 
 playerChange.addEventListener("change", function(){
